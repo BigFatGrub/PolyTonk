@@ -1,0 +1,22 @@
+{
+  "width": 5000,
+  "height": 5000,
+  "hostClient": true,
+  "mapBorderSize": 350,
+  "mapChangesToPlayerAmount": false,
+  "maxShapesDependsOnMapSize": false,
+  "maxShapes": 50,
+  "port": 8080,
+  "tierConfig": {
+    "tier1": 15,
+    "tier2": 30,
+    "tier3": 45
+  },
+  "baseSizeConfig": {
+    "2tdm": 12
+  },
+  "gm": "ffa",
+  "accountsEnabled": false,
+  "developerPowers": true,
+  "publicCheatingLevel": 1
+}
