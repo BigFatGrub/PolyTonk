@@ -77,7 +77,7 @@ const prefix = "---===>>> ";
 const server = {
     entityTypesPacket: 0,
     fps: 30,
-    level45Score: 22275,
+    level50Score: 30000,
 };
 util.lerp = function(v0, v1, t) {
     return v0 * (1 - t) + v1 * t
@@ -185,7 +185,7 @@ util.lerpAngle = function(a, b, x) {
 };
 
 server.entityTypesPacket = protocol.encode("entityTypes", JSON.stringify(entityConfig.entityTypeMockups));
-
+//New server needs to start here. How about const room2 = {}
 const room = {
     width: config.width,
     height: config.height,
@@ -398,7 +398,7 @@ class Entity {
         this.speed = 15;
         this.size = size;
         this.level = 1;
-        this.maxLevel = 45;
+        this.maxLevel = 50;
         this.fieldFactor = 1;
         this.score = 0;
         this.fov = 1;
@@ -459,7 +459,7 @@ class Entity {
         this.inVulnerable = false;
         this.inVulnerableTime = 0;
         this.getPointsOn = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 28, 29, 30, 32, 33, 35, 37, 39, 41,
-            43, 45
+            43, 45, 46, 47, 48, 49, 50
         ];
         this.skill = {
             rld: 0, // Reload
@@ -748,7 +748,7 @@ class Entity {
         for (let key in this.barrels) {
             if (this.barrels[key].canShoot) this.barrels[key].loop();
         };
-         this.health += (1 / this.maxHealth) * (this.skill.heal / 500);
+         this.health += (50 / this.maxHealth) * (this.skill.heal / 500);
     // 10 second heal system
     if (this.health <= 0) this.kill();
     if (this.health < this.previousFrame.health) this.healTime = Date.now() + 10000; // Wait for 10 seconds to heal
@@ -902,8 +902,8 @@ class Entity {
                         if (this.type == "food") {
                             room.entities[killer.owner].score += this.value;
                         } else if (this.type == "tank") {
-                            if (this.score > server.level45Score) {
-                                room.entities[killer.owner].score += server.level45Score;
+                            if (this.score > server.level50Score) {
+                                room.entities[killer.owner].score += server.level50Score;
                             } else room.entities[killer.owner].score += this.score;
                             room.entities[killer.owner].score += this.value;
                             if (room.entities[killer.owner].connection != null) {
@@ -915,8 +915,8 @@ class Entity {
                     } else if (this.type == "food") {
                         killer.score += this.value;
                     } else if (this.type == "tank") {
-                        if (this.score > server.level45Score) {
-                            killer.score += server.level45Score;
+                        if (this.score > server.level50Score) {
+                            killer.score += server.level50Score;
                         } else killer.score += this.score;
                         killer.score += this.value;
                         if (killer.connection != null) {
@@ -1452,7 +1452,7 @@ function gameLoop() {
         shape.facing = Math.random() * (Math.PI * 2);
         shape.maxHealth = (((choose + 1) * (choose + 1)) * 5) * (alpha ? 50 : 1) * (superAlpha ? 5 : 1);
         shape.health = shape.maxHealth;
-        shape.damage *= 5;
+        shape.damage *= .1;
         shape.value = (((choose + 1) * (choose + 1)) * 25) * (alpha ? 5 : 1) * (superAlpha ? 10 : 1);
     };
     for (let key in room.entities) {
