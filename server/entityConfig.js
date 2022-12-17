@@ -9,17 +9,22 @@ exports.entityTypes = [{
   barrels: []
 }, {
   name: "Square",
+  bodyShape: 5,
+  fieldFactor: 1,
+  barrels: []
+}, {
+  name: "Coin",
   bodyShape: 8,
   fieldFactor: 1,
   barrels: []
 }, {
   name: "Triangle",
-  bodyShape: 8,
+  bodyShape: 6,
   fieldFactor: 1,
   barrels: []
 }, {
   name: "Pentagon",
-  bodyShape: 8,
+  bodyShape: 7,
   fieldFactor: 1,
   barrels: []
 }, {
@@ -42,6 +47,11 @@ exports.entityTypes = [{
   bodyShape: 5,
   fieldFactor: 1,
   barrels: [{ angle: 0, offset: 0, height: 1.8, width: 0.9, recoil: 1, delay: 0, reload: 1, bullet: { damageFactor: 1, rangeFactor: 1, penFactor: 1, spdFactor: 1, }, }],
+}, {
+    name: "Kamikazie",
+  bodyShape: 8,
+  fieldFactor: 1,
+  barrels: [{ angle: 0, offset: 0, height: .5, width: 0.4, recoil: 1, delay: 0, reload: .1, bullet: { damageFactor: .5, rangeFactor: 2, penFactor: 1, spdFactor: 1, }, }],
 }, {
   name: "Flank Guard",
   bodyShape: 6,
@@ -160,7 +170,7 @@ exports.entityTypes = [{
   barrels: [{ angle: 0, offset: 0, height: 1.5, width: 0.9, recoil: 1, delay: 0, reload: 1, bullet: { damageFactor: 100, rangeFactor: 0.8, penFactor: 900, spdFactor: 2.5, sprFactor: 0.5, }, }],
 }, {
   name: "Minigun",
-  bodyShape: 0,
+  bodyShape: 5,
   fieldFactor: 2,
   barrels: [{ angle: 0, offset: 0, height: 1.75, width: 0.9, recoil: 3, delay: 0, reload: 2, bullet: { damageFactor: 2, rangeFactor: 1.5, penFactor: 1.75, spdFactor: 2, sprFactor: 0.2 }, }, { canShoot: false, angle: 0, offset: 0, height: 1.3, width: 0.9, trapezoidWidth: -0.3 }],
 }, {
@@ -288,7 +298,7 @@ exports.entityTypes = [{
   barrels: [{ angle: 0, offset: 0, height: 2, width: 1, recoil: 1, delay: 0, reload: 1, bullet: { damageFactor: 1, rangeFactor: 1, penFactor: 1, spdFactor: 1, }, }],
 }, {
   name: "Triplet",
-  bodyShape: 0,
+  bodyShape: 5,
   fieldFactor: 1,
   barrels: [{ angle: 0, offset: 0.5, height: 1.5, width: 0.9, recoil: 1, delay: 0.5, reload: 1, bullet: { damageFactor: 0.8, rangeFactor: 1, penFactor: 0.97, spdFactor: 1, }, }, 
             { angle: 0, offset: -0.5, height: 1.5, width: 0.9, recoil: 1, delay: 0.5, reload: 1, bullet: { damageFactor: 0.8, rangeFactor: 1, penFactor: 0.97, spdFactor: 1, }, },
@@ -297,7 +307,7 @@ exports.entityTypes = [{
 exports.stringEntityTypes = {};
 exports.upgradeTree = {
   Tank: {
-    tier1: ["Twin", "Sniper", "Machine Gun", "Flank Guard"],//, "Mothership", "Dominator", "Arena Closer"],
+    tier1: ["Twin", "Sniper", "Machine Gun", "Flank Guard", "Overseer"],//, "Mothership", "Dominator", "Arena Closer"],
     tier2: ["Smasher"]
   },
   Smasher: {
@@ -309,6 +319,7 @@ exports.upgradeTree = {
   },
   Overseer: {
     tier3: ["Overlord"],
+    tier3: ["Kamikazie"]
   },
   "Flank Guard": {
     tier2: ["Quad Tank", "Triple Shot", "Tri-Angle", "Twin Flank"],
