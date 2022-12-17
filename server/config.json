@@ -1,12 +1,12 @@
 {
-  "width": 5000,
-  "height": 5000,
+  "width": 10000,
+  "height": 10000,
   "hostClient": true,
   "mapBorderSize": 350,
   "mapChangesToPlayerAmount": false,
-  "maxShapesDependsOnMapSize": false,
-  "maxShapes": 50,
-  "port": 8080,
+  "maxShapesDependsOnMapSize": true,
+  "maxShapes": 130,
+  "port": 9090,
   "tierConfig": {
     "tier1": 15,
     "tier2": 30,
