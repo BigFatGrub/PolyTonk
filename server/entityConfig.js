@@ -48,11 +48,6 @@ exports.entityTypes = [{
   fieldFactor: 1,
   barrels: [{ angle: 0, offset: 0, height: 1.8, width: 0.9, recoil: 1, delay: 0, reload: 1, bullet: { damageFactor: 1, rangeFactor: 1, penFactor: 1, spdFactor: 1, }, }],
 }, {
-    name: "Kamikazie",
-  bodyShape: 8,
-  fieldFactor: 1,
-  barrels: [{ angle: 0, offset: 0, height: .5, width: 0.4, recoil: 1, delay: 0, reload: .1, bullet: { damageFactor: .5, rangeFactor: 2, penFactor: 1, spdFactor: 1, }, }],
-}, {
   name: "Flank Guard",
   bodyShape: 6,
   fieldFactor: 1,
@@ -319,7 +314,6 @@ exports.upgradeTree = {
   },
   Overseer: {
     tier3: ["Overlord"],
-    tier3: ["Kamikazie"]
   },
   "Flank Guard": {
     tier2: ["Quad Tank", "Triple Shot", "Tri-Angle", "Twin Flank"],
