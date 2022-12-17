@@ -1,0 +1,212 @@
+<head>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Odibee+Sans:wght@900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Odibee+Sans:wght@700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="description" content="PolyTonk is a sequel to Diep.io, with a lot of tanks and features!">
+  <meta name="keywords" content="Diep, Arras, Obstar, Maxtri, io">
+  <meta name="theme-color" content="#ffb347">
+  <meta name="author" content="BigFatGrub">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<title>PolyTonk | V1.02</title>
+<link rel="icon" type="image/x-icon" href="/client/polytonk-arena-icon.png">
+<a id="link"></a>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-85CRKB7D09"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-85CRKB7D09');
+</script>
+    <script src="/min.js"></script>
+    <script src="/script.js"></script>
+<style>
+  body{
+    cursor: crosshair;
+  }
+  canvas {
+    cursor: crosshair;
+    position: fixed;
+    image-rendering: optimizeSpeed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .playerInput {
+    position: fixed;
+    top: 0;
+    left: 0;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    display: none;
+    background: none;
+    font-family: Odibee Sans;
+    font-weight: 900;
+  }
+  .loginInput {
+    cursor: crosshair;
+    position:fixed;
+    background-color: transparent;
+    border:none;
+    border:none;
+    outline: none;
+    font-size: 20px;
+    font-family: Odibee Sans;
+    font-weight: 900;
+  }
+  .terminalButton {
+    cursor: crosshair;
+    text-align:center;
+    position:fixed;
+    top:calc(100% - 25px - 10px);
+    left:calc(10px + 300px + 10px);
+    background:black;
+    color:white;
+    font-family: Odibee Sans;
+    border:none;
+    outline:none;
+    width: 40px;
+    height: 25px;
+    opacity:0.8;
+  }
+  .terminalButton:hover {
+    cursor: crosshair;
+    background:grey;
+    cursor:pointer;
+  }
+</style>
+<canvas id="mainCanvas"></canvas>
+<input id="nameInput" style="display:none;" class="playerInput" maxlength="24">
+<div id="loginInput" style="position:fixed;left:0;top:0;display:none;">
+  <input id="loginNameInput" class="loginInput" maxlength="24">  
+  <input id="loginPassInput" type="password" class="loginInput" style="top:100px;" maxlength="24"> 
+</div>
+<div id="terminal" style="display:none;">
+  <textarea id="terminalOutput" style="position:fixed;top:calc(100% - 25px - 20px - 250px);left:10px;background:black;color:white;font-family: Odibee Sans;border:none;outline:none;width: 300px;height: 250px;opacity:0.8" placeholder="Output"></textarea>
+  <input id="terminalInput" style="position:fixed;top:calc(100% - 25px - 10px);left:10px;background:black;color:white;font-family: Odibee Sans;border:none;outline:none;width: 300px;height: 25px;opacity:0.8" placeholder="Enter a command...">
+  <button id="terminalExit" class="terminalButton" placeholder="Enter a command...">Exit</button>
+</div>
+<script type="module" src="./config.js"></script>
+<script type="module" src="./main.js"></script>
+<script type="module" src="./protocol/spb.js"></script>
+<script type="module" src="./protocol/protocol.js"></script>
+
+<style>
+  <link href="https://fonts.googleapis.com/css2?family=Odibee+Sans:wght@900&display=swap" rel="stylesheet">
+    /* Basic Styling for login form */ 
+    .loginOverlay{
+        position: fixed;
+        right:0px; left:0px;
+        top:0px; bottom:0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .loginForm{
+        background-image: url("https://cdn.glitch.global/7f79e2fb-40e6-41a3-a7dd-0441366c7ee7/5151vamxcmlx.webp?v=1671244148945");
+        position:fixed;
+        top:0;
+        left:0;
+        bottom:0;
+        right:0;
+        width:100%;
+        height:100%;
+        border:none;
+        margin:0;
+        padding:0;
+        overflow:hidden;
+        z-index:999999;
+        background-color: #333436;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .loginForm.error{
+        border:1px solid red;
+    }
+
+      .input{
+        background-color: #ffff;
+        padding: 5px;
+        font-family: Odibee Sans;
+        height: 30px;
+        width: 250px;
+        border-radius: 5px 0px 0px 5px;
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+        border: none;
+    }
+
+        .btn{
+        background-color: #ffff;
+        padding: 5px;  
+        font-family: Odibee Sans;
+        height: 30px;
+        width: 60px;
+        border-radius: 0px 5px 5px 0px;
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+        border: none;
+    }
+</style>
+<div class="loginOverlay" id="loginOverlay"><!-- Overlay -->
+    <div class="loginForm" id="loginForm"><!-- Form -->
+        <input class = "input" type="text" id="uEmail"> <button onclick="checkEmail()" class = "btn">Proceed</button>
+    </div>
+</div>
+<script>
+
+    const loginOverlay = document.getElementById("loginOverlay"); //Reference of the overlay that blocks the access.
+    const loginForm = document.getElementById("loginForm");//Reference of the form box.
+
+    //Email list to be populated.
+    let emails = [
+    "a@a.com"
+    ];
+
+    /**/
+
+function loadJSON(file,callback) {//Function that loading a file.
+    var xReq = new XMLHttpRequest();
+    xReq.overrideMimeType("application/json");
+    xReq.open('GET', file, true);
+    xReq.onreadystatechange = function() {
+        if (xReq.readyState === 4 && xReq.status === 200) {
+            callback(xReq.responseText);
+        }
+    };
+    xReq.send(null);
+}
+    
+
+
+    function checkEmail() {//Your login control method
+
+        let value = document.getElementById("uEmail").value//Get value of input
+
+        if(emails.indexOf(value)!== -1){//Is it in the list?
+            loginOverlay.remove();//Remove overlay
+            window.ws = new WebSlides(); //Run Slides
+
+        }else{
+            if(!loginForm.classList.contains('error')){//Is error styling added
+                loginForm.classList.add("error")//Add error styling.
+            }
+        }
+    }
+
+    loadJSON('users.json',(list)=>{//Get your list.
+        emails = JSON.parse(list);
+    });
+    
+    </script>
