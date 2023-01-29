@@ -1,10 +1,10 @@
 exports.entityTypes = [{
   name: "Unknown Class",
-  bodyShape: 0,
+  bodyShape: 8,
   barrels: [],
 }, {
   name: "Coin",
-  bodyShape: 8,
+  bodyShape: 15,
   fieldFactor: 1,
   barrels: []
 }, {
@@ -75,18 +75,44 @@ exports.entityTypes = [{
 }, {
   name: "Assassin",
   bodyShape: 5,
-  fieldFactor: 1.4,
+  fieldFactor: 1.3,
   barrels: [{ angle: 0, offset: 0, height: 2.5, width: 0.9, recoil: 1, delay: 0, reload: 1.4, bullet: { damageFactor: 1.2, rangeFactor: 1.2, penFactor: 1.2, spdFactor: 1.75, sprFactor: 0.3 }, }],
 }, {
   name: "Ranger",
   bodyShape: 5,
-  fieldFactor: 1.6,
-  barrels: [{ angle: 0, offset: 0, height: 2.5, width: 0.9, recoil: 1, delay: 0, reload: 1.7, bullet: { damageFactor: 1.3, rangeFactor: 1.3, penFactor: 1.3, spdFactor: 2, sprFactor: 0.2 }, }, { canShoot: false, angle: 0, offset: 0, height: 1.3, width: 0.9, trapezoidWidth: -0.3 }],
+  fieldFactor: 1.4,
+  barrels: [{ angle: 0, offset: 0, height: 2.5, width: 0.9, recoil: 1, delay: 0, reload: 1.7, bullet: { damageFactor: 1.3, rangeFactor: 1.3, penFactor: 1.5, spdFactor: 2, sprFactor: 0.2 }, }, { canShoot: false, angle: 0, offset: 0, height: 1.3, width: 0.9, trapezoidWidth: -0.3 }],
+}, {
+  name: "Arty",
+  spdFactor: 1,
+  bodyShape: 5,
+  fieldFactor: 1.3,
+      shell: {
+      shape: 8,
+      spinning: false,
+      spinSpeed: .5,
+      color: 8,
+      size: 1.5,
+  },
+barrels: [{ angle: 0, offset: 0, height: 3, width: 0.9, recoil: 7, delay: 0, reload: 7, bullet: { damageFactor: 1.4, rangeFactor: 5, penFactor: 7, spdFactor: 1.5, }, }],
+}, { 
+    name: "Railgun",
+  spdFactor: 1.1,
+  bodyShape: 5,
+  fieldFactor: 1.5,
+        shell: {
+      shape: 8,
+      spinning: false,
+      spinSpeed: 10,
+      color: 8,
+      size: 1.5,
+    },
+barrels: [{ angle: 0, offset: 0, height: 2.7, width: 0.9, recoil: 10, delay: 0, reload: 5, bullet: { damageFactor: 1.6, rangeFactor: 2, penFactor: 10, spdFactor: 2.3, sprFactor: 0.2 }, }, { canShoot: false, angle: 0, offset: 0, height: 1.3, width: 0.9, trapezoidWidth: -0.3 }],
 }, {
   name: "Annihilator",
   bodyShape: 5,
   fieldFactor: 1,
-  barrels: [{ angle: 0, offset: 0, height: 1.9, width: 1.9, recoil: 10, delay: 0, reload: 4, bullet: { damageFactor: 10, rangeFactor: 2, penFactor: 50, spdFactor: 0.7, }, }],
+  barrels: [{ angle: 0, offset: 0, height: 1.9, width: 1.9, recoil: 10, delay: 0, reload: 8, bullet: { damageFactor: 2, rangeFactor: 2, penFactor: 2, spdFactor: 0.5, }, }],
 }, {
   name: "Destroyer",
   bodyShape: 5,
@@ -103,18 +129,7 @@ exports.entityTypes = [{
   fieldFactor: 1,
   barrels: [{ angle: 0, offset: 0, height: 1.8, width: 1.3, recoil: 3, delay: 0, reload: 1.5, trapezoidWidth: 0.15, bullet: { damageFactor: 0.97, rangeFactor: 1.25, penFactor: 0.97, spdFactor: 1.05, sprFactor: 2 }, }],
 }, {
-  name: "Mothership",
-  bodyShape: 16,
-  fieldFactor: 1.5,
-  sizeFactor: 3,
-  barrels: (function(){
-    let output = [];
-    for (let i = 0; i < 16; i++) {
-      output.push({ angle: i * (360 / 16), offset: 0, height: 1.3, width: 0.2, recoil: 1, delay: 0, reload: 1, trapezoidWidth: 0.1, bullet: { damageFactor: 1, rangeFactor: 1, penFactor: 1, spdFactor: 1, }, });
-    };
-    return output;
-  })(),
-}, {
+  
   name: "Tri-Angle",
   bodyShape: 0,
   fieldFactor: 1,
@@ -163,11 +178,6 @@ exports.entityTypes = [{
   bodyShape: 0,
   fieldFactor: 15,
   barrels: [{ angle: 0, offset: 0, height: 1.5, width: 0.9, recoil: 1, delay: 0, reload: 1, bullet: { damageFactor: 100, rangeFactor: 0.8, penFactor: 900, spdFactor: 2.5, sprFactor: 0.5, }, }],
-}, {
-  name: "Minigun",
-  bodyShape: 5,
-  fieldFactor: 2,
-  barrels: [{ angle: 0, offset: 0, height: 1.75, width: 0.9, recoil: 3, delay: 0, reload: 2, bullet: { damageFactor: 2, rangeFactor: 1.5, penFactor: 1.75, spdFactor: 2, sprFactor: 0.2 }, }, { canShoot: false, angle: 0, offset: 0, height: 1.3, width: 0.9, trapezoidWidth: -0.3 }],
 }, {
   name: "Smasher",
   bodyShape: 6,
@@ -222,7 +232,7 @@ exports.entityTypes = [{
   name: "Penta Shot",
   bodyShape: 6,
   fieldFactor: 1,
-  barrels: [{ angle: -40, offset: -0.2, height: 1.4, width: 0.9, recoil: 1, delay: 1, reload: 1, bullet: { damageFactor: 1, rangeFactor: 1, penFactor: 1, spdFactor: 1, }, }, { angle: 40, offset: 0.2, height: 1.4, width: 0.9, recoil: 1, delay: 1, reload: 1, bullet: { damageFactor: 1, rangeFactor: 1, penFactor: 1, spdFactor: 1, }, }, { angle: 20, offset: 0.15, height: 1.7, width: 0.9, recoil: 1, delay: 0.5, reload: 1, bullet: { damageFactor: 1, rangeFactor: 1, penFactor: 1, spdFactor: 1, }, }, { angle: -20, offset: -0.15, height: 1.7, width: 0.9, recoil: 1, delay: 0.5, reload: 1, bullet: { damageFactor: 1, rangeFactor: 1, penFactor: 1, spdFactor: 1, }, }, { angle: 0, offset: 0, height: 1.9, width: 0.9, recoil: 1, delay: 0, reload: 1, bullet: { damageFactor: 1, rangeFactor: 1, penFactor: 1, spdFactor: 1, }, }],
+  barrels: [{ angle: -40, offset: -0.2, height: 1.4, width: 0.9, recoil: 1, delay: 1, reload: 1, bullet: { damageFactor: 1, rangeFactor: 1, penFactor: .5, spdFactor: 1, }, }, { angle: 40, offset: 0.2, height: 1.4, width: 0.9, recoil: 1, delay: 1, reload: 1, bullet: { damageFactor: 1, rangeFactor: 1, penFactor: .5, spdFactor: 1, }, }, { angle: 20, offset: 0.15, height: 1.7, width: 0.9, recoil: 1, delay: 0.5, reload: 1, bullet: { damageFactor: 1, rangeFactor: 1, penFactor: .5, spdFactor: 1, }, }, { angle: -20, offset: -0.15, height: 1.7, width: 0.9, recoil: 1, delay: 0.5, reload: 1, bullet: { damageFactor: 1, rangeFactor: 1, penFactor: .5, spdFactor: 1, }, }, { angle: 0, offset: 0, height: 1.9, width: 0.9, recoil: 1, delay: 0, reload: 1, bullet: { damageFactor: 1, rangeFactor: 1, penFactor: .5, spdFactor: 1, }, }],
 }, {
   name: "Booster",
   bodyShape: 5,
@@ -269,6 +279,11 @@ exports.entityTypes = [{
       { angle: -20 + 180, offset: -0.15, height: 1.7, width: 0.9, recoil: 1, delay: 0.5, reload: 1, bullet: { damageFactor: 1, rangeFactor: 1, penFactor: 1, spdFactor: 1, }, }, 
       { angle: 0 + 180, offset: 0, height: 1.9, width: 0.9, recoil: 1, delay: 0, reload: 1, bullet: { damageFactor: 1, rangeFactor: 1, penFactor: 1, spdFactor: 1, }, }],
 }, {
+    name: "Shotty",
+  bodyShape: 5,
+  fieldFactor: 1.05,
+  barrels: [{ angle: 0, offset: 0.5, height: 2, width: 0.9, recoil: 1.5, delay: 0, reload: 5, bullet: { damageFactor: 2, rangeFactor: 1.5, penFactor: 2, spdFactor: .8, sprFactor: 4,}, }, { angle: 0, offset: -0.5, height: 2, width: 0.9, recoil: 1.5, delay: .0, reload: 5, bullet: { damageFactor: 2, rangeFactor: 1, penFactor: 3, spdFactor: .8, sprFactor: 4,}, }, { angle: 0, offset: 0.5, height: 2, width: 0.9, recoil: 1.5, delay: .0, reload: 5, bullet: { damageFactor: 2, rangeFactor: 1.5, penFactor: 2, spdFactor: .8, sprFactor: 4,}, }, { angle: 0, offset: 0.5, height: 2, width: 0.9, recoil: 1.5, delay: 0, reload: 5, bullet: { damageFactor: 2, rangeFactor: 1.5, penFactor: 2, spdFactor: .8, sprFactor: 4,}, }],
+}, {
   name: "Twin Flank",
   bodyShape: 8,
   fieldFactor: 1,
@@ -295,9 +310,9 @@ exports.entityTypes = [{
   name: "Triplet",
   bodyShape: 5,
   fieldFactor: 1,
-  barrels: [{ angle: 0, offset: 0.5, height: 1.5, width: 0.9, recoil: 1, delay: 0.5, reload: 1, bullet: { damageFactor: 0.8, rangeFactor: 1, penFactor: 0.97, spdFactor: 1, }, }, 
-            { angle: 0, offset: -0.5, height: 1.5, width: 0.9, recoil: 1, delay: 0.5, reload: 1, bullet: { damageFactor: 0.8, rangeFactor: 1, penFactor: 0.97, spdFactor: 1, }, },
-            { angle: 0, offset: 0, height: 1.8, width: 1, recoil: 1, delay: 0, reload: 1, bullet: { damageFactor: 0.8, rangeFactor: 1, penFactor: 0.97, spdFactor: 1, }, }],
+  barrels: [{ angle: 0, offset: 0.5, height: 1.5, width: 0.9, recoil: 1, delay: 0.5, reload: 1, bullet: { damageFactor: 0.8, rangeFactor: 1, penFactor: 1, spdFactor: 1, }, }, 
+            { angle: 0, offset: -0.5, height: 1.5, width: 0.9, recoil: 1, delay: 0.5, reload: 1, bullet: { damageFactor: 0.8, rangeFactor: 1, penFactor: 1, spdFactor: 1, }, },
+            { angle: 0, offset: 0, height: 1.8, width: 1, recoil: 1, delay: 0, reload: 1, bullet: { damageFactor: 0.8, rangeFactor: 1, penFactor: 1, spdFactor: 1, }, }],
 }];
 exports.stringEntityTypes = {};
 exports.upgradeTree = {
@@ -309,8 +324,7 @@ exports.upgradeTree = {
     tier3: ["Mega Smasher"],
   },
   Sniper: {
-    tier2: ["Assassin"],
-    tier3: ["Minigun"],
+    tier2: ["Assassin", "Arty"],
   },
   Overseer: {
     tier3: ["Overlord"],
@@ -322,7 +336,7 @@ exports.upgradeTree = {
     tier3: ["Booster", "Fighter"],
   },
   Twin: {
-    tier2: ["Quad Tank", "Triple Shot", "Twin Flank"],
+    tier2: ["Quad Tank", "Triple Shot", "Twin Flank", "Shotty"],
     tier3: ["Triplet"],
   },
   "Twin Flank": {
@@ -336,6 +350,9 @@ exports.upgradeTree = {
   },
   Assassin: {
     tier3: ["Ranger"],
+  },
+  Arty: {
+    tier3: ["Railgun"],
   },
   "Machine Gun": {
     tier2: ["Destroyer"],
