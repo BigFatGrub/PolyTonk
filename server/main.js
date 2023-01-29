@@ -707,7 +707,7 @@ class Entity {
                 if (entities.length == 0) {
                     this.goToBase = true;
                 } else if (util.distance(thisPos, entities[0]) > 3000) {
-                    this.speed = 50;
+                    this.speed = 10;
                     entities = [{
                         x: util.getBasePos(0, this.team) + (Math.cos(this.orbitAngle) * 300),
                         y: util.getBasePos(1, this.team) + (Math.sin(this.orbitAngle) * 300)
@@ -748,10 +748,10 @@ class Entity {
         for (let key in this.barrels) {
             if (this.barrels[key].canShoot) this.barrels[key].loop();
         };
-         this.health += (50 / this.maxHealth) * (this.skill.heal / 500);
+         this.health += (70 / this.maxHealth) * (this.skill.heal / 500);
     // 10 second heal system
     if (this.health <= 0) this.kill();
-    if (this.health < this.previousFrame.health) this.healTime = Date.now() + 10000; // Wait for 10 seconds to heal
+    if (this.health < this.previousFrame.health) this.healTime = Date.now() + 20000; // Wait for 10 seconds to heal
     if (this.health != this.previousFrame.health) {
       // Check if our health is more than our max health. if it is, make our health our max health.
       if (this.health > this.maxHealth) this.health = this.maxHealth;
@@ -1388,7 +1388,7 @@ function createShape(choose = (function() {
     return chance
 })(), alpha = Math.random() > 0.9, superAlpha = alpha ? Math.random() > 0.9 : false, spawnPosition = [(Math.random() * room.width) - room.width / 2, (Math
     .random() * room.height) - room.height / 2]) {
-    let shapes = ["Square", "Triangle", "Pentagon", "Hexagon"]
+    let shapes = ["Square", "Triangle", "Pentagon", "Hexagon", "Coin"]
     let shape = new Entity(spawnPosition[0], spawnPosition[1], "", idGenerator.generateId(), (40 + (choose * 15)) * (alpha ? 2 : 1) * (superAlpha ? 2 : 1),
         "food", null, true);
     shape.team = -1;
@@ -1438,7 +1438,7 @@ function gameLoop() {
         let choose = Math.round(Math.random() * 3);
         let alpha = Math.random() > 0.975;
         let superAlpha = alpha ? Math.random() > 0.975 : false;
-        let shapes = ["Square", "Triangle", "Pentagon", "Hexagon"]
+        let shapes = ["Square", "Triangle", "Pentagon", "Hexagon", "Coin"]
         let spawnPosition = [(Math.random() * room.width) - room.width / 2, (Math.random() * room.height) - room.height / 2];
         if (alpha) {
             spawnPosition = [util.getRandomFromRange(-room.width / 10, room.width / 10), util.getRandomFromRange(-room.height / 10, room.height / 10)];
