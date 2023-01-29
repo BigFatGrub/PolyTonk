@@ -8,7 +8,7 @@ import {
     canvas.oncontextmenu = function(e) {
         e.preventDefault();
     };
-    ctx.imageSmoothingEnabled = false;
+    ctx.imageSmoothingEnabled = true;
     let ws;
     const util = {};
     let entityTypes = [];
@@ -1399,14 +1399,7 @@ import {
                 ctx.globalAlpha = 1;
                 ctx.globalAlpha = 1;
                 util.drawText(ctx, tank.name + " - " + tank.score, (config.leaderboardWidth / 2) + config.spacing, 45 + i * 35 + config.spacing, 20)
-                              // draw the tank
-                util.drawEntity(ctx, config.screenWidth - 1275 - config.spacing, 40.2 + i * 35.4 + config.spacing, {
-                    class: tank.class,
-                    showHealth: false,
-                    showName: false,
-                    color: tank.color,
-                    facing: -Math.PI / 4
-                }, undefined, 10, 1, false);
+                            
             };
             };
             if (player.showingTank) {
@@ -1554,9 +1547,9 @@ import {
                 util.drawText(ctx, "PolyTonk accounts (Beta)", config.screenWidth / 2, config.screenHeight - config.spacing - 12.5 - animations.menu * 30 + animations.menuSlide * 100, 20 + animations.loginButton * 2.5, "center");
             } else {
                 ctx.fillStyle = colors[0];
-                util.drawText(ctx, "⚔ PolyTonk ⚔ V1.02", config.screenWidth / 2, config.screenHeight - config.spacing - 12.5 - animations.menu * 30 + animations.menuSlide * 100, 20, "center");
+                util.drawText(ctx, "Copyright 2023    |    ⚔ PolyTonk ⚔ V1.03", config.screenWidth / 2, config.screenHeight - config.spacing - 12.5 - animations.menu * 30 + animations.menuSlide * 100, 20, "center");
             };
-            // cohort.io button, too lazy to finish.
+            // diep.io button, too lazy to finish.
             ctx.globalAlpha = 1;
             /*ctx.strokeStyle = darkColors[8];
             let hovering = false;
@@ -1635,7 +1628,7 @@ import {
             ctx.fillRect(0, 0, config.screenWidth, config.screenHeight);
             ctx.globalAlpha = animations.deathScreen;
             ctx.fillStyle = colors[2];
-            //util.drawText(ctx, player.deathMessage, config.screenWidth / 2, config.screenHeight / 2 - 50 - 400 - -animations.deathScreen * 400, 10, "center");
+            util.drawText(ctx, player.deathMessage, config.screenWidth / 2, config.screenHeight / 2 - 50 - 400 - -animations.deathScreen * 400, 10, "center");
             util.drawText(ctx, "Died to a " + entityTypes[player.killerType].name, config.screenWidth / 2, config.screenHeight / 2 - 100 - 400 - -animations.deathScreen * 400, 10, "center");
             util.drawText(ctx, "Score: " + player.score, (config.screenWidth / 2) - 150, config.screenHeight / 2 - 50 - 400 - -animations.deathScreen * 400, 20, "left");
             util.drawText(ctx, "Level " + player.level + " " + player.tank.name, (config.screenWidth / 2) - 150, config.screenHeight / 2 - 400 - -animations.deathScreen * 400, 20, "left");
@@ -1645,10 +1638,10 @@ import {
             ctx.globalAlpha*=0.9
             ctx.drawImage(offCanvas.deathIcon.canvas, config.screenWidth / 2, config.screenHeight / 2 - 50 - 400 - -animations.deathScreen * 400)
             ctx.globalAlpha = 1;
-            /*animations.deathScreen = util.lerp(animations.deathScreen, 1, 0.05);
+            animations.deathScreen = util.lerp(animations.deathScreen, 1, 0.05);
             ctx.globalAlpha = animations.deathScreen / 4;
             ctx.fillStyle = colors[1];
-            ctx.fillRect(0, 0, config.screenWidth, config.screenHeight);*/
+            ctx.fillRect(0, 0, config.screenWidth, config.screenHeight);
         };
         if (config.disconnected) {
             config.gameState = config.gameStates.unknown;
@@ -2069,7 +2062,7 @@ import {
                         color: 10,
                         facing: -Math.PI / 4
                     }, undefined, 25, 3, false);
-                    /*player.deathMessage = "";
+                    player.deathMessage = "";
                     if (player.score > 100000) {
                         player.deathMessage = "Nice score, good luck next time"
                     };
@@ -2105,7 +2098,7 @@ import {
                     };
                     if (player.score == 69420) {
                         player.deathMessage = "............";
-                    };*/
+                    };
                     break;
                 case "message":
                     config.messages.push({
