@@ -751,7 +751,7 @@ import {
                 case 79:
                     if (document.activeElement == document.body) elements.terminal.style.display = "block";
                     break;
-                case 20000000:
+                case 75:
                     ws.send(protocol.encode("levelUp"));
                     break;
                 case 13:
@@ -1399,14 +1399,6 @@ import {
                 ctx.globalAlpha = 1;
                 ctx.globalAlpha = 1;
                 util.drawText(ctx, tank.name + " - " + tank.score, (config.leaderboardWidth / 2) + config.spacing, 45 + i * 35 + config.spacing, 20)
-                              // draw the tank
-                util.drawEntity(ctx, config.screenWidth - 1275 - config.spacing, 40.2 + i * 35.4 + config.spacing, {
-                    class: tank.class,
-                    showHealth: false,
-                    showName: false,
-                    color: tank.color,
-                    facing: -Math.PI / 4
-                }, undefined, 10, 1, false);
             };
             };
             if (player.showingTank) {
@@ -1554,7 +1546,7 @@ import {
                 util.drawText(ctx, "PolyTonk accounts (Beta)", config.screenWidth / 2, config.screenHeight - config.spacing - 12.5 - animations.menu * 30 + animations.menuSlide * 100, 20 + animations.loginButton * 2.5, "center");
             } else {
                 ctx.fillStyle = colors[0];
-                util.drawText(ctx, "⚔ PolyTonk ⚔ V1.02", config.screenWidth / 2, config.screenHeight - config.spacing - 12.5 - animations.menu * 30 + animations.menuSlide * 100, 20, "center");
+                util.drawText(ctx, "⚔ PolyTonk ⚔ V1.03", config.screenWidth / 2, config.screenHeight - config.spacing - 12.5 - animations.menu * 30 + animations.menuSlide * 100, 20, "center");
             };
             // cohort.io button, too lazy to finish.
             ctx.globalAlpha = 1;
